@@ -1,0 +1,44 @@
+✅ E03
+Generatory
+
+Generatory w CMake tworzą pliki budowania (build files), które następnie są używane do zbudowania aplikacji.
+
+Przykłady generatorów:
+
+Unix Makefiles (pliki Makefile)
+
+Ninja (pliki build.ninja)
+
+Generator sam niczego nie kompiluje – tylko tworzy pliki, które opisują jak kompilować projekt.
+
+Aby zbudować projekt przy użyciu wygenerowanego systemu:
+
+dla Makefile wołam: "make"
+dla Ninja wolam "ninja"
+
+Te narzędzia (make/ninja) uruchamiają faktyczny kompilator (gcc, g++, clang itd.), tworząc binarkę.
+
+
+✅ E04
+Budowanie za pomocą CMake
+
+CMake pozwala budować projekt bez konieczności ręcznego wywoływania make lub ninja, niezależnie od użytego generatora.
+
+Zamiast pisać make lub ninja, mogę po prostu: "cmake --build ."
+
+CMake wykryje, jaki generator został użyty i uruchomi odpowiednie narzędzie (make lub ninja).
+
+✅ E05
+Podzial na pliki
+
+Zarzadzanie plikami w "src" i "include"
+
+Headery
+target_include_directories(HelloAppBinary PRIVATE ${CMAKE_SOURCE_DIR}/include)
+
+Zrodla
+add_executable(HelloAppBinary
+    main.cpp
+    src/dog.cpp				<- plik source
+    src/operations.cpp)			<- plik source
+
